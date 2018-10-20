@@ -2,7 +2,7 @@ all: sieve.o main.o
 	gcc sieve.o main.o -lm
 
 run:
-	./a.out
+	./a.out $(args)
 
 clear:
 	rm *.o

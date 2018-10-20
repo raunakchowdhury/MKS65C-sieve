@@ -4,7 +4,7 @@
 
 int sieve(int targetPrime){
   int num; //length
-  int prime; //returned prime
+  int prime = 2; //returned prime
   double estimate = log(targetPrime); //find log
   //printf("Log: %f\n", estimate);
   if (targetPrime < 5000){
@@ -21,28 +21,27 @@ int sieve(int targetPrime){
   int index;
   int second_index;
   int targetPrime_ctr = 1; // the current prime count; skip by 1
-  int sqrt_num = (int) sqrt(num); // the limit at which all possible composites have been filled
+  //int sqrt_num = (int) sqrt(num); // the limit at which all possible composites have been filled
   int interval; // will keep track of how much to increment by now that odd-number mapping is implemented
   for (index = 1; index < num; index++){
     // deal with nums not marked off
     if (num_array[index] != 'a'){
       //save the last prime
-      prime = 2 * index + 1;
-      targetPrime_ctr++;
       // return the prime if the num matches the targetPrime
       if (targetPrime_ctr == targetPrime){
         return prime;
       }
+      prime = 2 * index + 1;
+      targetPrime_ctr++;
       // don't iterate if you're at index sqrt(num)
-      if (index < sqrt_num){
+      if (index * index < num){
       // loop through the array, marking off any composite nums
         interval = 2 * index + 1;
         second_index = index;
-        while(second_index < num){
+        for (second_index = index; second_index < num; second_index += interval){
           if (num_array[second_index] != 'a'){
               num_array[second_index] = 'a';
           }
-          second_index += interval;
         }
       }
     }

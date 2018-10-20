@@ -1,5 +1,5 @@
 all: sieve.o main.o
-	gcc sieve.o main.o
+	gcc sieve.o main.o -lm
 
 run:
 	./a.out
@@ -7,8 +7,8 @@ run:
 clear:
 	rm *.o
 
-primes.o: sieve.c sieve.h
-	gcc -c -g -lm sieve.c
+sieve.o: sieve.c sieve.h
+	gcc -c -g sieve.c
 
 main.o: main.c sieve.h
 	gcc -c -g main.c

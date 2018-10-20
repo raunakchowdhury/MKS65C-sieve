@@ -1,3 +1,3 @@
 #include <math.h>
 
-int sieve(int num_prime);
+int sieve(int targetPrime);

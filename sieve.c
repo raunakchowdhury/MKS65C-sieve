@@ -16,12 +16,13 @@ int sieve(int targetPrime){
   num = num / 2; //ignoring evens
   //printf("Num: %d\n", num);
   char * num_array = calloc(sizeof(char), num); // initialize array
+  int x;
 
   // =========== ACTUAL ALGORITHM =========
   int index;
   int second_index;
   int targetPrime_ctr = 1; // the current prime count; skip by 1
-  //int sqrt_num = (int) sqrt(num); // the limit at which all possible composites have been filled
+  int sqrt_num = (int) sqrt(num); // the limit at which all possible composites have been filled
   int interval; // will keep track of how much to increment by now that odd-number mapping is implemented
   for (index = 1; index < num; index++){
     // deal with nums not marked off
@@ -34,7 +35,7 @@ int sieve(int targetPrime){
       prime = 2 * index + 1;
       targetPrime_ctr++;
       // don't iterate if you're at index sqrt(num)
-      if (index * index < num){
+      if (index< sqrt_num){
       // loop through the array, marking off any composite nums
         interval = 2 * index + 1;
         second_index = index;
